@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Lightspark",
   "colors": {
-    "primary": "#F7931A",
-    "light": "#FFBA59",
-    "dark": "#C76B00"
+    "primary": "#000000",
+    "light": "#516383",
+    "dark": "#ffffff"
   },
   "favicon": "/favicon.svg",
   "logo": {
@@ -14,6 +14,26 @@
   },
   "styling": {
     "global": "/global.css"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Website",
+        "href": "https://www.lightspark.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.lightspark.com"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://twitter.com/lightspark",
+      "github": "https://github.com/lightsparkdev",
+      "linkedin": "https://linkedin.com/company/lightspark"
+    }
   },
   "navigation": {
     "tabs": [
