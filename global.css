@@ -1,5 +1,5 @@
-/* Lightspark Docs Theme - Light Mode Only */
-/* All colors referenced from lightspark.com */
+/* Lightspark Docs Theme */
+/* ALL STYLES REFERENCED FROM https://www.lightspark.com */
 
 /* Fonts */
 @font-face {
@@ -26,13 +26,14 @@
   font-display: swap;
 }
 
-/* Base Typography */
+/* Base - from lightspark.com */
 body {
   font-family: 'Suisse Intl', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  color: #33475B !important;
+  color: #000000 !important;
+  background: #F8F8F7 !important;
 }
 
-/* Headings - Black like lightspark.com */
+/* Headings - BLACK like lightspark.com */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Suisse Intl', sans-serif !important;
   font-weight: 500;
@@ -43,32 +44,18 @@ code, pre {
   font-family: 'Suisse Intl Mono', monospace !important;
 }
 
-/* Hide dark mode toggle */
-button[aria-label="Toggle dark mode"] {
-  display: none !important;
-}
-
-/* Hide tabs row - single nav only */
+/* Hide tabs row */
 .nav-tabs {
   display: none !important;
 }
 
-/* Navbar links - gray like lightspark.com */
+/* NAVBAR LINKS - BLACK like lightspark.com */
 .navbar-link a,
-#navbar nav ul li a {
-  color: #516383 !important;
+#navbar nav ul li a,
+#navbar a {
+  color: #000000 !important;
   font-weight: 400 !important;
   font-size: 15px !important;
-}
-
-.navbar-link a:hover,
-#navbar nav ul li a:hover {
-  color: #000000 !important;
-}
-
-/* Hide CTA button */
-#topbar-cta-button {
-  display: none !important;
 }
 
 /* Background - cream like lightspark.com */
@@ -80,7 +67,6 @@ button[aria-label="Toggle dark mode"] {
   backdrop-filter: none !important;
 }
 
-body,
 #almond-background-color {
   background: #F8F8F7 !important;
 }
@@ -90,29 +76,22 @@ body,
   top: 4rem !important;
 }
 
-/* Sidebar text colors */
+/* Sidebar - BLACK text like lightspark.com */
 .sidebar-group-header h5 {
   color: #000000 !important;
 }
 
 .sidebar-group a {
-  color: #516383 !important;
-}
-
-.sidebar-group a:hover {
   color: #000000 !important;
 }
 
-/* Active sidebar link */
-.sidebar-group a[class*="bg-primary"] {
-  color: #000000 !important;
-}
-
-/* Links in content */
+/* ALL LINKS - BLACK like lightspark.com */
 a {
   color: #000000 !important;
 }
 
-a:hover {
-  color: #33475B !important;
+/* Primary color override - BLACK */
+.text-primary,
+[class*="text-primary"] {
+  color: #000000 !important;
 }
