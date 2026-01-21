@@ -2,15 +2,19 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
   "name": "Lightspark",
+  "appearance": {
+    "default": "light",
+    "strict": true
+  },
   "colors": {
     "primary": "#000000",
-    "light": "#516383",
-    "dark": "#ffffff"
+    "light": "#000000",
+    "dark": "#000000"
   },
   "favicon": "/favicon.svg",
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/light.svg"
   },
   "styling": {
     "global": "/global.css"
