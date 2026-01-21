@@ -12,6 +12,9 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
+  "styling": {
+    "global": "/global.css"
+  },
   "navigation": {
     "tabs": [
       {
