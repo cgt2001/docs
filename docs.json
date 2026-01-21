@@ -8,12 +8,6 @@
     "dark": "#C76B00"
   },
   "favicon": "/favicon.svg",
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/introduction"
-    }
-  ],
   "navigation": {
     "tabs": [
       {
@@ -22,7 +16,7 @@
           {
             "group": "Get Started",
             "pages": [
-              "introduction",
+              "index",
               "quickstart"
             ]
           },
