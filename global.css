@@ -1,6 +1,6 @@
 /* ============================================
    Lightspark Documentation Theme
-   Matching lightspark.com design language
+   Matching lightspark.com unified navigation
    ============================================ */
 
 /* Suisse Intl Font Family */
@@ -28,7 +28,6 @@
   font-display: swap;
 }
 
-/* Suisse Intl Mono */
 @font-face {
   font-family: 'Suisse Intl Mono';
   src: url('/static/fonts/suisse-intl-mono/SuisseIntlMono-Regular-WebXL.woff2') format('woff2');
@@ -46,14 +45,11 @@
 }
 
 /* ============================================
-   CSS Variables - Lightspark Brand Colors
+   CSS Variables - Lightspark Brand
    ============================================ */
 :root {
-  /* Typography */
   --font-sans: 'Suisse Intl', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'Suisse Intl Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
-  
-  /* Lightspark Colors */
+  --font-mono: 'Suisse Intl Mono', 'SF Mono', Monaco, monospace;
   --ls-black: #000000;
   --ls-white: #ffffff;
   --ls-cream: #F8F8F7;
@@ -68,7 +64,6 @@
 body {
   font-family: var(--font-sans) !important;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
 }
 
@@ -78,247 +73,217 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
-}
-
-h2 {
-  font-size: 1.75rem;
-  line-height: 1.2;
-}
-
-h3 {
-  font-size: 1.25rem;
-  line-height: 1.3;
-}
-
-p, li {
-  line-height: 1.6;
-}
-
-/* ============================================
-   Code Styling
-   ============================================ */
-code, pre, .code-block, [class*="language-"] {
+code, pre {
   font-family: var(--font-mono) !important;
 }
 
-pre {
-  border-radius: 8px !important;
-}
-
-code:not(pre code) {
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-  font-size: 0.9em;
-}
-
 /* ============================================
-   UNIFIED NAVIGATION - Lightspark Style
-   Hide the second nav row (tabs) and create
-   a single unified navigation bar
+   UNIFIED NAVBAR - Remove second row (tabs)
+   This hides the Guides/API Reference tabs bar
    ============================================ */
 
 /* Hide the tabs row completely */
-.nav-tabs,
-#navbar .nav-tabs,
-[class*="nav-tabs"],
-.lg\:flex.px-12.h-12 {
+#navbar .px-12.h-12,
+#navbar > div > div > div:last-child:has(.nav-tabs),
+.nav-tabs {
   display: none !important;
 }
 
-/* Make the main navbar taller to compensate */
-#navbar {
-  height: auto !important;
-}
-
-#navbar > div > div > div {
-  height: 4rem !important;
-}
-
-/* Style the navbar container */
-#navbar-transition {
-  background: var(--ls-cream) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-}
-
-.dark #navbar-transition {
-  background: var(--ls-black) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Navbar links - Lightspark hover style */
-#navbar nav ul a,
-#navbar .navbar-link,
-nav[class*="text-sm"] a {
-  position: relative;
-  color: var(--ls-gray-medium) !important;
-  font-weight: 400;
-  font-size: 0.9375rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-#navbar nav ul a:hover,
-#navbar .navbar-link:hover {
-  color: var(--ls-black) !important;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-
-.dark #navbar nav ul a:hover,
-.dark #navbar .navbar-link:hover {
-  color: var(--ls-white) !important;
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-/* Primary button styling */
-#navbar a[class*="primary"],
-#navbar button[class*="primary"] {
-  background-color: var(--ls-black) !important;
-  color: var(--ls-white) !important;
-  border-radius: 6px !important;
-  padding: 0.5rem 1rem !important;
-  font-weight: 500 !important;
-  font-size: 0.875rem !important;
-  transition: all 0.2s ease !important;
-}
-
-#navbar a[class*="primary"]:hover,
-#navbar button[class*="primary"]:hover {
-  background-color: var(--ls-gray-dark) !important;
-  transform: translateY(-1px);
-}
-
-.dark #navbar a[class*="primary"],
-.dark #navbar button[class*="primary"] {
-  background-color: var(--ls-white) !important;
-  color: var(--ls-black) !important;
-}
-
-.dark #navbar a[class*="primary"]:hover,
-.dark #navbar button[class*="primary"]:hover {
-  background-color: #E5E5E5 !important;
-}
-
-/* Logo styling */
-.nav-logo {
-  height: 1.5rem !important;
-}
-
-/* Search bar styling */
-#search-bar-entry,
-[id*="search-bar"] {
-  background-color: rgba(0, 0, 0, 0.04) !important;
-  border: none !important;
-  border-radius: 8px !important;
-}
-
-.dark #search-bar-entry,
-.dark [id*="search-bar"] {
-  background-color: rgba(255, 255, 255, 0.08) !important;
+/* Target the tabs container more specifically */
+#navbar > div > div > div > div.hidden.lg\:flex.px-12.h-12 {
+  display: none !important;
 }
 
 /* ============================================
-   Sidebar Adjustments
+   Navbar Background & Styling
    ============================================ */
 
-/* Adjust sidebar top position since we removed tabs row */
+#navbar-transition {
+  background: var(--ls-white) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  backdrop-filter: none !important;
+}
+
+#navbar-transition[data-is-opaque="true"],
+#navbar-transition[data-is-opaque="false"] {
+  background: var(--ls-white) !important;
+}
+
+.dark #navbar-transition,
+.dark #navbar-transition[data-is-opaque="true"],
+.dark #navbar-transition[data-is-opaque="false"] {
+  background: var(--ls-black) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ============================================
+   Navbar Links - Lightspark Style
+   Gray text, transition to black on hover
+   ============================================ */
+
+.navbar-link a,
+#navbar nav.text-sm ul li a {
+  color: var(--ls-gray-medium) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.9375rem !important;
+  font-weight: 400 !important;
+  transition: color 0.15s ease !important;
+}
+
+.navbar-link a:hover,
+#navbar nav.text-sm ul li a:hover {
+  color: var(--ls-black) !important;
+}
+
+.dark .navbar-link a,
+.dark #navbar nav.text-sm ul li a {
+  color: var(--ls-gray-light) !important;
+}
+
+.dark .navbar-link a:hover,
+.dark #navbar nav.text-sm ul li a:hover {
+  color: var(--ls-white) !important;
+}
+
+/* ============================================
+   Primary CTA Button - Contact
+   ============================================ */
+
+#topbar-cta-button a {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+#topbar-cta-button a span:first-of-type {
+  display: none !important;
+}
+
+#topbar-cta-button a > div {
+  margin: 0 !important;
+}
+
+#topbar-cta-button a span.z-10 {
+  color: var(--ls-gray-medium) !important;
+  font-weight: 400 !important;
+  transition: color 0.15s ease !important;
+}
+
+#topbar-cta-button a:hover span.z-10 {
+  color: var(--ls-black) !important;
+}
+
+#topbar-cta-button a svg {
+  display: none !important;
+}
+
+.dark #topbar-cta-button a span.z-10 {
+  color: var(--ls-gray-light) !important;
+}
+
+.dark #topbar-cta-button a:hover span.z-10 {
+  color: var(--ls-white) !important;
+}
+
+/* ============================================
+   Hide Search Bar (optional - Lightspark hides it)
+   ============================================ */
+
+#search-bar-entry {
+  display: none !important;
+}
+
+/* ============================================
+   Logo
+   ============================================ */
+
+.nav-logo {
+  height: 1.375rem !important;
+}
+
+/* ============================================
+   Sidebar - Adjust for single nav row
+   Now sidebar starts after h-16 (4rem) navbar only
+   ============================================ */
+
 #sidebar {
   top: 4rem !important;
+  height: calc(100vh - 4rem) !important;
 }
 
-/* Sidebar active state */
-.sidebar-group a[class*="bg-primary"] {
-  background-color: rgba(0, 0, 0, 0.06) !important;
-  color: var(--ls-black) !important;
+/* Sidebar styling */
+.sidebar-group a {
+  font-family: var(--font-sans) !important;
 }
 
-.dark .sidebar-group a[class*="bg-primary"] {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  color: var(--ls-white) !important;
-}
-
-/* Sidebar group headers */
 .sidebar-group-header h5 {
+  font-family: var(--font-sans) !important;
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ls-gray-medium);
+  letter-spacing: 0.08em;
 }
 
 /* ============================================
-   Content Area
+   Content Area - Adjust top spacing
    ============================================ */
 
-/* Adjust content top margin since we removed tabs */
 #content-container {
-  padding-top: 1rem;
+  margin-top: -3rem !important;
+}
+
+/* On this page TOC */
+#table-of-contents-content {
+  top: 5rem !important;
 }
 
 /* ============================================
-   Cards & Components
+   Background Colors
    ============================================ */
-[class*="Card"] {
-  border-radius: 12px !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  transition: all 0.2s ease;
+
+body,
+#almond-background-color {
+  background-color: var(--ls-white) !important;
 }
 
-[class*="Card"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.dark [class*="Card"] {
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-.dark [class*="Card"]:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* ============================================
-   Tables
-   ============================================ */
-table {
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-th {
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  background-color: rgba(0, 0, 0, 0.02);
-}
-
-.dark th {
-  background-color: rgba(255, 255, 255, 0.04);
-}
-
-/* ============================================
-   Light Mode Background
-   ============================================ */
-:root:not(.dark) body,
-:root:not(.dark) #almond-background-color {
-  background-color: var(--ls-cream) !important;
-}
-
-/* ============================================
-   Dark Mode Background
-   ============================================ */
 .dark body,
 .dark #almond-background-color {
   background-color: var(--ls-black) !important;
 }
 
 /* ============================================
-   Scrollbar Styling
+   Cards
    ============================================ */
+
+[class*="Card"],
+a[href]:has(> div > div) {
+  border-radius: 12px !important;
+  transition: all 0.2s ease;
+}
+
+/* ============================================
+   Dark Mode Toggle
+   ============================================ */
+
+button[aria-label="Toggle dark mode"] {
+  color: var(--ls-gray-medium) !important;
+}
+
+button[aria-label="Toggle dark mode"]:hover {
+  color: var(--ls-black) !important;
+}
+
+.dark button[aria-label="Toggle dark mode"] {
+  color: var(--ls-gray-light) !important;
+}
+
+.dark button[aria-label="Toggle dark mode"]:hover {
+  color: var(--ls-white) !important;
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -338,25 +303,13 @@ th {
 }
 
 /* ============================================
-   Selection Styling
+   Selection
    ============================================ */
+
 ::selection {
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .dark ::selection {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* ============================================
-   Mobile Navigation
-   ============================================ */
-@media (max-width: 1024px) {
-  #navbar > div > div > div {
-    height: 3.5rem !important;
-  }
-  
-  #sidebar {
-    top: 3.5rem !important;
-  }
+  background-color: rgba(255, 255, 255, 0.15);
 }

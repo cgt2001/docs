@@ -18,14 +18,26 @@
   "navbar": {
     "links": [
       {
-        "label": "Website",
+        "label": "Guides",
+        "href": "/"
+      },
+      {
+        "label": "API Reference",
+        "href": "/api-reference/introduction"
+      },
+      {
+        "label": "Lightspark.com",
         "href": "https://www.lightspark.com"
+      },
+      {
+        "label": "Log in",
+        "href": "https://app.lightspark.com/login"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.lightspark.com"
+      "label": "Contact",
+      "href": "https://www.lightspark.com/contact"
     }
   },
   "footer": {
