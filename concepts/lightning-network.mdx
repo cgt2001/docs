@@ -1,0 +1,75 @@
+---
+title: Lightning Network
+description: "Understanding the Lightning Network and how Lightspark leverages it"
+---
+
+## What is the Lightning Network?
+
+The Lightning Network is a Layer 2 payment protocol built on top of Bitcoin. It enables fast, low-cost transactions by creating a network of payment channels between participants.
+
+## How It Works
+
+### Payment Channels
+
+Payment channels are the fundamental building blocks of Lightning:
+
+1. **Opening a Channel**: Two parties lock Bitcoin in a multi-signature address on-chain
+2. **Transacting**: They can now exchange value instantly by updating the channel state
+3. **Closing a Channel**: Either party can close the channel and settle the final balance on-chain
+
+### Routing
+
+Payments can be routed through multiple channels to reach any participant in the network, even without a direct channel:
+
+```
+Alice → Bob → Carol → Dave
+```
+
+Each hop is trustless and atomic — either the entire payment succeeds or it fails completely.
+
+## Benefits
+
+| Feature | On-Chain Bitcoin | Lightning Network |
+|---------|------------------|-------------------|
+| Speed | ~10 minutes | Milliseconds |
+| Fees | Variable, can be high | Fraction of a cent |
+| Throughput | ~7 TPS | Millions of TPS |
+| Privacy | Pseudonymous | Enhanced |
+
+## How Lightspark Helps
+
+Managing Lightning nodes, channels, and liquidity is complex. Lightspark handles:
+
+<Columns cols={2}>
+  <Card title="Node Operations" icon="server">
+    We run highly available, enterprise-grade Lightning nodes
+  </Card>
+  <Card title="Channel Management" icon="arrows-left-right">
+    Automatic channel opening, closing, and rebalancing
+  </Card>
+  <Card title="Liquidity" icon="water">
+    Dynamic liquidity provisioning for reliable payments
+  </Card>
+  <Card title="Routing" icon="route">
+    Intelligent pathfinding for optimal payment routing
+  </Card>
+</Columns>
+
+## Learn More
+
+<Columns cols={2}>
+  <Card
+    title="Wallets"
+    icon="wallet"
+    href="/concepts/wallets"
+  >
+    Understand wallet types and management
+  </Card>
+  <Card
+    title="Transactions"
+    icon="arrow-right-arrow-left"
+    href="/concepts/transactions"
+  >
+    Deep dive into Lightning transactions
+  </Card>
+</Columns>

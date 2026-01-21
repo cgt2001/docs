@@ -1,33 +1,136 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: API Introduction
+description: "Overview of the Lightspark API"
+sidebarTitle: "Introduction"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Base URL
 
-## Welcome
+All API requests should be made to:
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+```
+https://api.lightspark.com/graphql
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Lightspark uses API tokens for authentication. Include your credentials in every request:
+
+```bash
+curl -X POST https://api.lightspark.com/graphql \
+  -H "Content-Type: application/json" \
+  -H "X-Lightspark-Api-Token: $LIGHTSPARK_API_TOKEN" \
+  -d '{"query": "{ currentAccount { id name } }"}'
+```
+
+<Note>
+  Get your API credentials from the [Lightspark Dashboard](https://app.lightspark.com/settings/api).
+</Note>
+
+## GraphQL API
+
+Lightspark uses GraphQL, giving you the flexibility to request exactly the data you need.
+
+### Example Query
+
+```graphql
+query GetAccount {
+  currentAccount {
+    id
+    name
+    nodes {
+      edges {
+        node {
+          id
+          displayName
+          status
+        }
+      }
+    }
+  }
+}
+```
+
+### Example Mutation
+
+```graphql
+mutation CreateInvoice($input: CreateInvoiceInput!) {
+  createInvoice(input: $input) {
+    invoice {
+      id
+      encodedPaymentRequest
+      amountMsats
+      expiresAt
+    }
+  }
+}
+```
+
+## SDKs
+
+We provide official SDKs that handle authentication and provide typed interfaces:
+
+<Columns cols={3}>
+  <Card title="JavaScript" icon="js" href="https://github.com/lightsparkdev/js-sdk">
+    `@lightspark/lightspark-sdk`
+  </Card>
+  <Card title="Python" icon="python" href="https://github.com/lightsparkdev/python-sdk">
+    `lightspark`
+  </Card>
+  <Card title="Go" icon="golang" href="https://github.com/lightsparkdev/go-sdk">
+    `lightspark-sdk`
+  </Card>
+</Columns>
+
+## Rate Limits
+
+| Plan | Requests/min | Burst |
+|------|--------------|-------|
+| Free | 60 | 10 |
+| Pro | 600 | 100 |
+| Enterprise | Custom | Custom |
+
+<Info>
+  Rate limit headers are included in every response:
+  - `X-RateLimit-Limit`: Your rate limit
+  - `X-RateLimit-Remaining`: Requests remaining
+  - `X-RateLimit-Reset`: Unix timestamp when the limit resets
+</Info>
+
+## Error Handling
+
+GraphQL errors are returned in the `errors` array:
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Invalid API token",
+      "extensions": {
+        "code": "UNAUTHENTICATED"
+      }
+    }
+  ]
+}
 ```
+
+### Common Error Codes
+
+| Code | Description |
+|------|-------------|
+| `UNAUTHENTICATED` | Invalid or missing API token |
+| `FORBIDDEN` | Insufficient permissions |
+| `NOT_FOUND` | Resource doesn't exist |
+| `VALIDATION_ERROR` | Invalid input parameters |
+| `RATE_LIMITED` | Too many requests |
+
+## Next Steps
+
+<Card
+  title="Authentication"
+  icon="key"
+  href="/api-reference/authentication"
+>
+  Learn how to generate and manage API tokens
+</Card>

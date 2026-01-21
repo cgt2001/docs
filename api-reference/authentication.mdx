@@ -1,0 +1,151 @@
+---
+title: Authentication
+description: "How to authenticate with the Lightspark API"
+---
+
+## API Tokens
+
+Lightspark uses API token pairs for authentication:
+
+- **Client ID**: Public identifier for your token
+- **Client Secret**: Private key (keep this secure!)
+
+## Creating API Tokens
+
+<Steps>
+  <Step title="Log in to Dashboard">
+    Go to [app.lightspark.com](https://app.lightspark.com) and sign in
+  </Step>
+  <Step title="Navigate to API Settings">
+    Click **Settings** → **API Tokens**
+  </Step>
+  <Step title="Create New Token">
+    Click **Create Token** and give it a descriptive name
+  </Step>
+  <Step title="Save Your Credentials">
+    Copy both the Client ID and Client Secret. The secret is only shown once!
+  </Step>
+</Steps>
+
+<Warning>
+  Never share your Client Secret or commit it to version control. Treat it like a password.
+</Warning>
+
+## Using API Tokens
+
+### With SDKs
+
+<CodeGroup>
+
+```typescript TypeScript
+import { LightsparkClient } from "@lightspark/lightspark-sdk";
+
+const client = new LightsparkClient({
+  apiTokenClientId: process.env.LIGHTSPARK_API_TOKEN_CLIENT_ID,
+  apiTokenClientSecret: process.env.LIGHTSPARK_API_TOKEN_CLIENT_SECRET,
+});
+```
+
+```python Python
+from lightspark import LightsparkClient
+import os
+
+client = LightsparkClient(
+    api_token_client_id=os.environ["LIGHTSPARK_API_TOKEN_CLIENT_ID"],
+    api_token_client_secret=os.environ["LIGHTSPARK_API_TOKEN_CLIENT_SECRET"],
+)
+```
+
+```go Go
+import "github.com/lightsparkdev/go-sdk/lightspark"
+
+client := lightspark.NewClient(
+    os.Getenv("LIGHTSPARK_API_TOKEN_CLIENT_ID"),
+    os.Getenv("LIGHTSPARK_API_TOKEN_CLIENT_SECRET"),
+)
+```
+
+</CodeGroup>
+
+### Direct API Calls
+
+For direct GraphQL requests, use HTTP Basic Auth or the header method:
+
+<Tabs>
+  <Tab title="Header Auth">
+    ```bash
+    curl -X POST https://api.lightspark.com/graphql \
+      -H "Content-Type: application/json" \
+      -H "X-Lightspark-Api-Token: $CLIENT_ID:$CLIENT_SECRET" \
+      -d '{"query": "{ currentAccount { id } }"}'
+    ```
+  </Tab>
+  <Tab title="Basic Auth">
+    ```bash
+    curl -X POST https://api.lightspark.com/graphql \
+      -u "$CLIENT_ID:$CLIENT_SECRET" \
+      -H "Content-Type: application/json" \
+      -d '{"query": "{ currentAccount { id } }"}'
+    ```
+  </Tab>
+</Tabs>
+
+## Token Permissions
+
+When creating tokens, you can scope their permissions:
+
+| Permission | Description |
+|------------|-------------|
+| `read:account` | View account information |
+| `read:transactions` | View transaction history |
+| `write:invoices` | Create Lightning invoices |
+| `write:payments` | Send payments |
+| `manage:wallets` | Create and manage wallets |
+| `admin` | Full access to all operations |
+
+<Info>
+  Follow the principle of least privilege — only grant permissions that are needed.
+</Info>
+
+## Token Rotation
+
+Regularly rotate your API tokens for security:
+
+1. Create a new token with the same permissions
+2. Update your application to use the new token
+3. Verify the new token works correctly
+4. Revoke the old token
+
+## Environment Variables
+
+We recommend storing credentials in environment variables:
+
+```bash
+# .env (never commit this file!)
+LIGHTSPARK_API_TOKEN_CLIENT_ID=your_client_id
+LIGHTSPARK_API_TOKEN_CLIENT_SECRET=your_client_secret
+```
+
+Add `.env` to your `.gitignore`:
+
+```bash
+echo ".env" >> .gitignore
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="UNAUTHENTICATED Error">
+    - Verify your Client ID and Secret are correct
+    - Check that you're using the right environment (test vs production)
+    - Ensure the token hasn't been revoked
+  </Accordion>
+  <Accordion title="FORBIDDEN Error">
+    - The token may not have required permissions
+    - Create a new token with appropriate scopes
+  </Accordion>
+  <Accordion title="Token Not Working After Creation">
+    - New tokens may take a few seconds to propagate
+    - Try again after a brief delay
+  </Accordion>
+</AccordionGroup>

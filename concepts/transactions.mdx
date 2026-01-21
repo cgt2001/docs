@@ -1,0 +1,144 @@
+---
+title: Transactions
+description: "Sending and receiving payments on the Lightning Network"
+---
+
+## Transaction Types
+
+Lightspark supports several transaction types:
+
+| Type | Description | Use Case |
+|------|-------------|----------|
+| **Invoice Payment** | Pay a Lightning invoice | Standard payments |
+| **Keysend** | Send without an invoice | Tips, donations |
+| **On-Chain** | Bitcoin L1 transactions | Large settlements |
+| **Internal** | Between Lightspark wallets | Instant, zero-fee |
+
+## Receiving Payments
+
+### Create an Invoice
+
+Generate a Lightning invoice for incoming payments:
+
+```typescript
+const invoice = await client.createInvoice({
+  nodeId: "your-node-id",
+  amountMsats: 1000000, // 1,000 sats
+  memo: "Payment for services",
+  expirySecs: 3600, // 1 hour
+});
+
+// Share this with the payer
+console.log(invoice.encodedPaymentRequest);
+```
+
+### Invoice Statuses
+
+<Steps>
+  <Step title="PENDING">
+    Invoice created, awaiting payment
+  </Step>
+  <Step title="PAID">
+    Payment received and confirmed
+  </Step>
+  <Step title="EXPIRED">
+    Invoice expired without payment
+  </Step>
+  <Step title="CANCELLED">
+    Invoice manually cancelled
+  </Step>
+</Steps>
+
+## Sending Payments
+
+### Pay an Invoice
+
+```typescript
+const payment = await client.payInvoice({
+  nodeId: "your-node-id",
+  encodedInvoice: "lnbc10u1p3...",
+  timeoutSecs: 60,
+  maxFeesMsats: 5000,
+});
+```
+
+### Keysend Payment
+
+Send a payment without requiring an invoice:
+
+```typescript
+const payment = await client.sendKeysend({
+  nodeId: "your-node-id",
+  destinationPubkey: "03abc...",
+  amountMsats: 50000,
+});
+```
+
+## Webhooks
+
+Stay informed about transaction status changes with webhooks:
+
+```json
+{
+  "event_type": "PAYMENT_COMPLETED",
+  "timestamp": "2026-01-21T10:30:00Z",
+  "data": {
+    "payment_id": "pay_abc123",
+    "amount_msats": 1000000,
+    "status": "COMPLETED",
+    "fee_msats": 100
+  }
+}
+```
+
+### Webhook Events
+
+| Event | Description |
+|-------|-------------|
+| `INVOICE_CREATED` | New invoice generated |
+| `INVOICE_PAID` | Invoice payment received |
+| `PAYMENT_INITIATED` | Outgoing payment started |
+| `PAYMENT_COMPLETED` | Outgoing payment succeeded |
+| `PAYMENT_FAILED` | Outgoing payment failed |
+
+## Error Handling
+
+<Warning>
+  Always implement proper error handling for payment operations.
+</Warning>
+
+```typescript
+try {
+  const payment = await client.payInvoice({
+    nodeId: "your-node-id",
+    encodedInvoice: invoice,
+  });
+} catch (error) {
+  if (error.code === "INSUFFICIENT_BALANCE") {
+    console.error("Not enough funds");
+  } else if (error.code === "ROUTE_NOT_FOUND") {
+    console.error("Could not find payment route");
+  } else if (error.code === "INVOICE_EXPIRED") {
+    console.error("Invoice has expired");
+  } else {
+    console.error("Payment failed:", error.message);
+  }
+}
+```
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Set Appropriate Timeouts">
+    Lightning payments are usually instant, but route finding can take time. Set timeouts between 30-120 seconds.
+  </Accordion>
+  <Accordion title="Configure Fee Limits">
+    Always set `maxFeesMsats` to prevent unexpectedly high routing fees.
+  </Accordion>
+  <Accordion title="Implement Idempotency">
+    Use idempotency keys to prevent duplicate payments in case of retries.
+  </Accordion>
+  <Accordion title="Handle Pending States">
+    Payments can be in a pending state. Poll for status or use webhooks.
+  </Accordion>
+</AccordionGroup>

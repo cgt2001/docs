@@ -1,0 +1,122 @@
+---
+title: Wallets
+description: "Understanding wallet types and management in Lightspark"
+---
+
+## Wallet Types
+
+Lightspark supports multiple wallet architectures to fit different use cases:
+
+### Custodial Wallets
+
+Lightspark manages the private keys on behalf of your users.
+
+<Tabs>
+  <Tab title="Pros">
+    - Simplified user experience
+    - No seed phrase management
+    - Instant onboarding
+    - Recovery handled by Lightspark
+  </Tab>
+  <Tab title="Cons">
+    - Users trust Lightspark with funds
+    - Regulatory considerations
+    - Single point of control
+  </Tab>
+</Tabs>
+
+### Non-Custodial Wallets
+
+Users maintain control of their private keys.
+
+<Tabs>
+  <Tab title="Pros">
+    - Full user sovereignty
+    - Reduced regulatory burden
+    - True self-custody
+  </Tab>
+  <Tab title="Cons">
+    - User responsible for backups
+    - More complex UX
+    - Potential for lost funds
+  </Tab>
+</Tabs>
+
+## Creating a Wallet
+
+<CodeGroup>
+
+```typescript TypeScript
+const wallet = await client.createWallet({
+  accountId: "your-account-id",
+  walletType: "CUSTODIAL",
+});
+
+console.log("Wallet ID:", wallet.id);
+```
+
+```python Python
+wallet = client.create_wallet(
+    account_id="your-account-id",
+    wallet_type="CUSTODIAL",
+)
+
+print(f"Wallet ID: {wallet.id}")
+```
+
+</CodeGroup>
+
+## Wallet Operations
+
+### Check Balance
+
+```typescript
+const balance = await client.getWalletBalance(walletId);
+
+console.log({
+  available: balance.availableMsats,
+  pending: balance.pendingMsats,
+  total: balance.totalMsats,
+});
+```
+
+### List Transactions
+
+```typescript
+const transactions = await client.getWalletTransactions({
+  walletId,
+  limit: 20,
+  status: ["COMPLETED", "PENDING"],
+});
+```
+
+## Security Best Practices
+
+<Warning>
+  Always follow these security guidelines when working with wallets.
+</Warning>
+
+<Steps>
+  <Step title="Use Environment Variables">
+    Never hardcode API keys or secrets in your application code.
+  </Step>
+  <Step title="Implement Rate Limiting">
+    Protect your endpoints from abuse with appropriate rate limits.
+  </Step>
+  <Step title="Monitor Transactions">
+    Set up alerts for unusual activity or large transactions.
+  </Step>
+  <Step title="Regular Audits">
+    Periodically review access logs and permissions.
+  </Step>
+</Steps>
+
+## Next Steps
+
+<Card
+  title="Transactions"
+  icon="arrow-right-arrow-left"
+  href="/concepts/transactions"
+>
+  Learn how to send and receive Lightning payments
+</Card>
