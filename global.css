@@ -60,18 +60,6 @@
   --ls-gray-dark: #33475B;
   --ls-gray-medium: #516383;
   --ls-gray-light: #8899A8;
-  
-  /* Light mode */
-  --background-light: #F8F8F7;
-  --text-primary-light: #000000;
-  --text-secondary-light: #33475B;
-  --text-tertiary-light: #516383;
-  
-  /* Dark mode */
-  --background-dark: #000000;
-  --text-primary-dark: #ffffff;
-  --text-secondary-dark: #E5E5E5;
-  --text-tertiary-dark: #8899A8;
 }
 
 /* ============================================
@@ -127,49 +115,147 @@ code:not(pre code) {
 }
 
 /* ============================================
-   Light Mode Overrides
+   UNIFIED NAVIGATION - Lightspark Style
+   Hide the second nav row (tabs) and create
+   a single unified navigation bar
    ============================================ */
-:root:not(.dark) {
-  --background-light: #F8F8F7;
+
+/* Hide the tabs row completely */
+.nav-tabs,
+#navbar .nav-tabs,
+[class*="nav-tabs"],
+.lg\:flex.px-12.h-12 {
+  display: none !important;
 }
 
-:root:not(.dark) body {
-  background-color: var(--ls-cream);
+/* Make the main navbar taller to compensate */
+#navbar {
+  height: auto !important;
 }
 
-:root:not(.dark) .prose {
-  color: var(--ls-black);
+#navbar > div > div > div {
+  height: 4rem !important;
 }
 
-/* ============================================
-   Dark Mode Overrides
-   ============================================ */
-.dark {
-  --background-dark: #000000;
+/* Style the navbar container */
+#navbar-transition {
+  background: var(--ls-cream) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
 }
 
-.dark body {
-  background-color: var(--ls-black);
+.dark #navbar-transition {
+  background: var(--ls-black) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-.dark .prose {
-  color: var(--ls-white);
+/* Navbar links - Lightspark hover style */
+#navbar nav ul a,
+#navbar .navbar-link,
+nav[class*="text-sm"] a {
+  position: relative;
+  color: var(--ls-gray-medium) !important;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
-/* ============================================
-   Navigation & Sidebar
-   ============================================ */
+#navbar nav ul a:hover,
+#navbar .navbar-link:hover {
+  color: var(--ls-black) !important;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.dark #navbar nav ul a:hover,
+.dark #navbar .navbar-link:hover {
+  color: var(--ls-white) !important;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Primary button styling */
+#navbar a[class*="primary"],
+#navbar button[class*="primary"] {
+  background-color: var(--ls-black) !important;
+  color: var(--ls-white) !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  transition: all 0.2s ease !important;
+}
+
+#navbar a[class*="primary"]:hover,
+#navbar button[class*="primary"]:hover {
+  background-color: var(--ls-gray-dark) !important;
+  transform: translateY(-1px);
+}
+
+.dark #navbar a[class*="primary"],
+.dark #navbar button[class*="primary"] {
+  background-color: var(--ls-white) !important;
+  color: var(--ls-black) !important;
+}
+
+.dark #navbar a[class*="primary"]:hover,
+.dark #navbar button[class*="primary"]:hover {
+  background-color: #E5E5E5 !important;
+}
+
+/* Logo styling */
 .nav-logo {
-  height: 1.75rem !important;
+  height: 1.5rem !important;
+}
+
+/* Search bar styling */
+#search-bar-entry,
+[id*="search-bar"] {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+.dark #search-bar-entry,
+.dark [id*="search-bar"] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ============================================
+   Sidebar Adjustments
+   ============================================ */
+
+/* Adjust sidebar top position since we removed tabs row */
+#sidebar {
+  top: 4rem !important;
 }
 
 /* Sidebar active state */
 .sidebar-group a[class*="bg-primary"] {
-  background-color: rgba(0, 0, 0, 0.08) !important;
+  background-color: rgba(0, 0, 0, 0.06) !important;
+  color: var(--ls-black) !important;
 }
 
 .dark .sidebar-group a[class*="bg-primary"] {
   background-color: rgba(255, 255, 255, 0.1) !important;
+  color: var(--ls-white) !important;
+}
+
+/* Sidebar group headers */
+.sidebar-group-header h5 {
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ls-gray-medium);
+}
+
+/* ============================================
+   Content Area
+   ============================================ */
+
+/* Adjust content top margin since we removed tabs */
+#content-container {
+  padding-top: 1rem;
 }
 
 /* ============================================
@@ -177,21 +263,21 @@ code:not(pre code) {
    ============================================ */
 [class*="Card"] {
   border-radius: 12px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
   transition: all 0.2s ease;
 }
 
 [class*="Card"]:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* ============================================
-   Buttons
-   ============================================ */
-button[class*="primary"],
-a[class*="primary"] {
-  border-radius: 8px !important;
-  font-weight: 500;
-  transition: all 0.2s ease;
+.dark [class*="Card"] {
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark [class*="Card"]:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================
@@ -207,6 +293,27 @@ th {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark th {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ============================================
+   Light Mode Background
+   ============================================ */
+:root:not(.dark) body,
+:root:not(.dark) #almond-background-color {
+  background-color: var(--ls-cream) !important;
+}
+
+/* ============================================
+   Dark Mode Background
+   ============================================ */
+.dark body,
+.dark #almond-background-color {
+  background-color: var(--ls-black) !important;
 }
 
 /* ============================================
@@ -234,7 +341,7 @@ th {
    Selection Styling
    ============================================ */
 ::selection {
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .dark ::selection {
@@ -242,15 +349,14 @@ th {
 }
 
 /* ============================================
-   Smooth Transitions
+   Mobile Navigation
    ============================================ */
-* {
-  transition-property: background-color, border-color, color;
-  transition-duration: 0.15s;
-  transition-timing-function: ease;
-}
-
-a, button {
-  transition-property: all;
-  transition-duration: 0.2s;
+@media (max-width: 1024px) {
+  #navbar > div > div > div {
+    height: 3.5rem !important;
+  }
+  
+  #sidebar {
+    top: 3.5rem !important;
+  }
 }
