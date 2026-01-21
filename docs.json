@@ -8,6 +8,10 @@
     "dark": "#C76B00"
   },
   "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
   "navigation": {
     "tabs": [
       {
@@ -42,44 +46,6 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "GitHub",
-          "href": "https://github.com/lightsparkdev",
-          "icon": "github"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://discord.gg/lightspark",
-          "icon": "discord"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:support@lightspark.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.lightspark.com"
-    }
-  },
-  "footer": {
-    "socials": {
-      "x": "https://twitter.com/lightspark",
-      "github": "https://github.com/lightsparkdev",
-      "linkedin": "https://linkedin.com/company/lightspark"
-    }
+    ]
   }
 }
