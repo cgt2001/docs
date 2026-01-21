@@ -44,9 +44,14 @@ code, pre {
   font-family: 'Suisse Intl Mono', monospace !important;
 }
 
-/* Hide tabs row */
-.nav-tabs {
+/* HIDE TABS ROW COMPLETELY - single nav only like lightspark.com */
+.nav-tabs,
+.lg\:flex.px-12.h-12,
+#navbar > div > div > div:has(.nav-tabs),
+[class*="nav-tabs"] {
   display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
 /* NAVBAR LINKS - BLACK like lightspark.com */
@@ -71,9 +76,10 @@ code, pre {
   background: #F8F8F7 !important;
 }
 
-/* Sidebar */
+/* SIDEBAR - Fix position, no second nav cutting it off */
 #sidebar {
   top: 4rem !important;
+  height: calc(100vh - 4rem) !important;
 }
 
 /* Sidebar - BLACK text like lightspark.com */
@@ -94,4 +100,14 @@ a {
 .text-primary,
 [class*="text-primary"] {
   color: #000000 !important;
+}
+
+/* Content area - adjust for single nav */
+#content-container {
+  margin-top: 0 !important;
+}
+
+/* Table of contents */
+#table-of-contents-content {
+  top: 4rem !important;
 }
