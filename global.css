@@ -1,21 +1,10 @@
-/* ============================================
-   Lightspark Documentation Theme
-   Matching lightspark.com unified navigation
-   ============================================ */
+/* Lightspark Docs Theme */
 
-/* Suisse Intl Font Family */
+/* Fonts */
 @font-face {
   font-family: 'Suisse Intl';
   src: url('/static/fonts/suisse-intl/SuisseIntl-Regular.woff2') format('woff2');
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Suisse Intl';
-  src: url('/static/fonts/suisse-intl/SuisseIntl-Book.woff2') format('woff2');
-  font-weight: 450;
   font-style: normal;
   font-display: swap;
 }
@@ -36,280 +25,75 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Suisse Intl Mono';
-  src: url('/static/fonts/suisse-intl-mono/SuisseIntlMono-Bold-WebXL.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ============================================
-   CSS Variables - Lightspark Brand
-   ============================================ */
-:root {
-  --font-sans: 'Suisse Intl', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'Suisse Intl Mono', 'SF Mono', Monaco, monospace;
-  --ls-black: #000000;
-  --ls-white: #ffffff;
-  --ls-cream: #F8F8F7;
-  --ls-gray-dark: #33475B;
-  --ls-gray-medium: #516383;
-  --ls-gray-light: #8899A8;
-}
-
-/* ============================================
-   Global Typography
-   ============================================ */
+/* Base */
 body {
-  font-family: var(--font-sans) !important;
-  -webkit-font-smoothing: antialiased;
-  letter-spacing: -0.01em;
+  font-family: 'Suisse Intl', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans) !important;
+  font-family: 'Suisse Intl', sans-serif !important;
   font-weight: 500;
-  letter-spacing: -0.02em;
 }
 
 code, pre {
-  font-family: var(--font-mono) !important;
+  font-family: 'Suisse Intl Mono', monospace !important;
 }
 
-/* ============================================
-   UNIFIED NAVBAR - Remove second row (tabs)
-   This hides the Guides/API Reference tabs bar
-   ============================================ */
-
-/* Hide the tabs row completely */
-#navbar .px-12.h-12,
-#navbar > div > div > div:last-child:has(.nav-tabs),
-.nav-tabs {
+/* Hide tabs row - single nav only */
+.nav-tabs,
+#navbar .nav-tabs,
+.lg\:flex.px-12.h-12 {
   display: none !important;
 }
 
-/* Target the tabs container more specifically */
-#navbar > div > div > div > div.hidden.lg\:flex.px-12.h-12 {
-  display: none !important;
-}
-
-/* ============================================
-   Navbar Background & Styling
-   ============================================ */
-
-#navbar-transition {
-  background: var(--ls-white) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-  backdrop-filter: none !important;
-}
-
-#navbar-transition[data-is-opaque="true"],
-#navbar-transition[data-is-opaque="false"] {
-  background: var(--ls-white) !important;
-}
-
-.dark #navbar-transition,
-.dark #navbar-transition[data-is-opaque="true"],
-.dark #navbar-transition[data-is-opaque="false"] {
-  background: var(--ls-black) !important;
-  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* ============================================
-   Navbar Links - Lightspark Style
-   Gray text, transition to black on hover
-   ============================================ */
-
+/* Navbar links - match Lightspark.com exactly */
 .navbar-link a,
-#navbar nav.text-sm ul li a {
-  color: var(--ls-gray-medium) !important;
-  font-family: var(--font-sans) !important;
-  font-size: 0.9375rem !important;
+#navbar nav ul li a {
+  color: #516383 !important;
   font-weight: 400 !important;
-  transition: color 0.15s ease !important;
+  font-size: 15px !important;
 }
 
 .navbar-link a:hover,
-#navbar nav.text-sm ul li a:hover {
-  color: var(--ls-black) !important;
+#navbar nav ul li a:hover {
+  color: #000000 !important;
 }
 
 .dark .navbar-link a,
-.dark #navbar nav.text-sm ul li a {
-  color: var(--ls-gray-light) !important;
+.dark #navbar nav ul li a {
+  color: #8899A8 !important;
 }
 
 .dark .navbar-link a:hover,
-.dark #navbar nav.text-sm ul li a:hover {
-  color: var(--ls-white) !important;
+.dark #navbar nav ul li a:hover {
+  color: #ffffff !important;
 }
 
-/* ============================================
-   Primary CTA Button - Contact
-   ============================================ */
-
-#topbar-cta-button a {
-  background: transparent !important;
-  padding: 0 !important;
-}
-
-#topbar-cta-button a span:first-of-type {
+/* Hide the CTA button styling - make it look like a regular link */
+#topbar-cta-button {
   display: none !important;
 }
 
-#topbar-cta-button a > div {
-  margin: 0 !important;
+/* Background */
+#navbar-transition {
+  background: #F8F8F7 !important;
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
 }
 
-#topbar-cta-button a span.z-10 {
-  color: var(--ls-gray-medium) !important;
-  font-weight: 400 !important;
-  transition: color 0.15s ease !important;
+.dark #navbar-transition {
+  background: #000000 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
 }
 
-#topbar-cta-button a:hover span.z-10 {
-  color: var(--ls-black) !important;
+body, #almond-background-color {
+  background: #F8F8F7 !important;
 }
 
-#topbar-cta-button a svg {
-  display: none !important;
+.dark body, .dark #almond-background-color {
+  background: #000000 !important;
 }
 
-.dark #topbar-cta-button a span.z-10 {
-  color: var(--ls-gray-light) !important;
-}
-
-.dark #topbar-cta-button a:hover span.z-10 {
-  color: var(--ls-white) !important;
-}
-
-/* ============================================
-   Hide Search Bar (optional - Lightspark hides it)
-   ============================================ */
-
-#search-bar-entry {
-  display: none !important;
-}
-
-/* ============================================
-   Logo
-   ============================================ */
-
-.nav-logo {
-  height: 1.375rem !important;
-}
-
-/* ============================================
-   Sidebar - Adjust for single nav row
-   Now sidebar starts after h-16 (4rem) navbar only
-   ============================================ */
-
+/* Sidebar adjustment for single nav */
 #sidebar {
   top: 4rem !important;
-  height: calc(100vh - 4rem) !important;
-}
-
-/* Sidebar styling */
-.sidebar-group a {
-  font-family: var(--font-sans) !important;
-}
-
-.sidebar-group-header h5 {
-  font-family: var(--font-sans) !important;
-  font-weight: 500;
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ============================================
-   Content Area - Adjust top spacing
-   ============================================ */
-
-#content-container {
-  margin-top: -3rem !important;
-}
-
-/* On this page TOC */
-#table-of-contents-content {
-  top: 5rem !important;
-}
-
-/* ============================================
-   Background Colors
-   ============================================ */
-
-body,
-#almond-background-color {
-  background-color: var(--ls-white) !important;
-}
-
-.dark body,
-.dark #almond-background-color {
-  background-color: var(--ls-black) !important;
-}
-
-/* ============================================
-   Cards
-   ============================================ */
-
-[class*="Card"],
-a[href]:has(> div > div) {
-  border-radius: 12px !important;
-  transition: all 0.2s ease;
-}
-
-/* ============================================
-   Dark Mode Toggle
-   ============================================ */
-
-button[aria-label="Toggle dark mode"] {
-  color: var(--ls-gray-medium) !important;
-}
-
-button[aria-label="Toggle dark mode"]:hover {
-  color: var(--ls-black) !important;
-}
-
-.dark button[aria-label="Toggle dark mode"] {
-  color: var(--ls-gray-light) !important;
-}
-
-.dark button[aria-label="Toggle dark mode"]:hover {
-  color: var(--ls-white) !important;
-}
-
-/* ============================================
-   Scrollbar
-   ============================================ */
-
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--ls-gray-light);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ls-gray-medium);
-}
-
-/* ============================================
-   Selection
-   ============================================ */
-
-::selection {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.dark ::selection {
-  background-color: rgba(255, 255, 255, 0.15);
 }
