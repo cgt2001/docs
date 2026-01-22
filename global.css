@@ -83,7 +83,7 @@ code, pre {
 }
 
 /* ============================================
-   SIDEBAR - Match lightspark.com menu
+   SIDEBAR - Equal spacing throughout
    ============================================ */
 
 #sidebar {
@@ -92,7 +92,7 @@ code, pre {
   padding: 24px 16px !important;
 }
 
-/* Group headers - same spacing as links */
+/* Group headers - NO extra margin, just line-height for spacing */
 .sidebar-group-header,
 .sidebar-group-header h5,
 #sidebar-title {
@@ -101,12 +101,12 @@ code, pre {
   font-size: 14px !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  margin-bottom: 4px !important;
-  padding: 6px 0 !important;
-  padding-left: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 2.4 !important;
 }
 
-/* Sidebar links - same padding as header */
+/* Sidebar links - equal spacing via line-height */
 .sidebar-group a,
 .sidebar-group li a,
 #sidebar a,
@@ -115,8 +115,8 @@ code, pre {
   color: #000000 !important;
   font-weight: 400 !important;
   font-size: 18px !important;
-  line-height: 1.4 !important;
-  padding: 6px 0 !important;
+  line-height: 2.4 !important;
+  padding: 0 !important;
   margin: 0 !important;
   background: transparent !important;
   border: none !important;
@@ -148,7 +148,7 @@ code, pre {
   font-weight: 500 !important;
 }
 
-/* Sidebar list */
+/* Sidebar list - no extra spacing */
 .sidebar-group ul,
 #sidebar-group {
   margin: 0 !important;
@@ -161,7 +161,7 @@ code, pre {
   list-style: none !important;
 }
 
-/* Group/section spacing - bigger gap between sections */
+/* Bigger gap between sections */
 .sidebar-group,
 #navigation-items > div {
   margin-bottom: 40px !important;
