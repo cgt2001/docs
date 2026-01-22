@@ -22,22 +22,6 @@
   "navbar": {
     "links": [
       {
-        "label": "Guides",
-        "href": "/"
-      },
-      {
-        "label": "API Reference",
-        "href": "/api-reference/introduction"
-      },
-      {
-        "label": "SDKs",
-        "href": "https://github.com/lightsparkdev"
-      },
-      {
-        "label": "Concepts",
-        "href": "/concepts/lightning-network"
-      },
-      {
         "label": "Lightspark.com",
         "href": "https://www.lightspark.com"
       },
@@ -61,7 +45,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Docs",
+        "tab": "Guides",
         "groups": [
           {
             "group": "Get Started",
@@ -74,9 +58,14 @@
               "concepts/wallets",
               "concepts/transactions"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
           {
-            "group": "API Reference",
+            "group": "API Documentation",
             "pages": [
               "api-reference/introduction",
               "api-reference/authentication"
