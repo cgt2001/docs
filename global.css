@@ -1,5 +1,5 @@
 /* Lightspark Docs Theme */
-/* ALL STYLES FROM https://www.lightspark.com */
+/* ALL STYLES FROM https://www.lightspark.com menu */
 
 /* Fonts */
 @font-face {
@@ -44,7 +44,7 @@ code, pre {
 }
 
 /* ============================================
-   PERMANENTLY HIDE TABS ROW (DOUBLE HEADER)
+   PERMANENTLY HIDE TABS ROW
    ============================================ */
 .nav-tabs,
 .nav-tabs-item,
@@ -83,46 +83,48 @@ code, pre {
 }
 
 /* ============================================
-   SIDEBAR - Match lightspark.com exactly
-   Colors: #000000 (black), #33475B (gray), #F8F8F7 (cream)
+   SIDEBAR - Exact match to lightspark.com menu
    ============================================ */
 
 #sidebar {
   top: 4rem !important;
   height: calc(100vh - 4rem) !important;
+  padding: 24px 16px !important;
 }
 
-/* Group headers - #33475B from lightspark.com */
+/* Group headers - light beige/tan like lightspark.com "Products", "Use cases" */
 .sidebar-group-header,
 .sidebar-group-header h5,
 #sidebar-title {
-  color: #33475B !important;
+  color: #9A8F85 !important;
   font-weight: 400 !important;
-  font-size: 16px !important;
+  font-size: 18px !important;
   text-transform: none !important;
-  letter-spacing: -0.01em !important;
-  margin-bottom: 16px !important;
+  letter-spacing: normal !important;
+  margin-bottom: 4px !important;
+  padding-left: 0 !important;
 }
 
-/* Sidebar links - #000000 black from lightspark.com */
+/* Sidebar links - black, large like lightspark.com "Grid", "Node", "Cross-border" */
 .sidebar-group a,
 .sidebar-group li a,
 #sidebar a,
 #navigation-items a,
 #sidebar-group a {
   color: #000000 !important;
-  font-weight: 500 !important;
-  font-size: 32px !important;
-  line-height: 1.2 !important;
-  padding: 16px 0 !important;
+  font-weight: 400 !important;
+  font-size: 40px !important;
+  line-height: 1.1 !important;
+  padding: 0 !important;
   margin: 0 !important;
   background: transparent !important;
-  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  border: none !important;
+  border-bottom: none !important;
   border-radius: 0 !important;
   display: block !important;
 }
 
-/* Remove default Mintlify backgrounds */
+/* Remove all Mintlify backgrounds and hover states */
 .sidebar-group a:hover,
 .sidebar-group a[class*="bg-"],
 .sidebar-group a[class*="text-primary"] {
@@ -130,7 +132,7 @@ code, pre {
   color: #000000 !important;
 }
 
-/* Sidebar list spacing */
+/* Sidebar list - no padding, tight spacing */
 .sidebar-group ul,
 #sidebar-group {
   margin: 0 !important;
@@ -143,13 +145,14 @@ code, pre {
   list-style: none !important;
 }
 
-/* Group spacing */
+/* Group spacing - matches lightspark.com */
 .sidebar-group,
 #navigation-items > div {
-  margin-bottom: 48px !important;
+  margin-bottom: 32px !important;
+  padding-left: 0 !important;
 }
 
-/* Content */
+/* Content links */
 a {
   color: #000000 !important;
 }
