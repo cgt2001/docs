@@ -92,7 +92,7 @@ code, pre {
   padding: 24px 16px !important;
 }
 
-/* Group headers - tan like lightspark.com */
+/* Group headers - same spacing as links */
 .sidebar-group-header,
 .sidebar-group-header h5,
 #sidebar-title {
@@ -101,11 +101,12 @@ code, pre {
   font-size: 14px !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 4px !important;
+  padding: 6px 0 !important;
   padding-left: 0 !important;
 }
 
-/* Sidebar links */
+/* Sidebar links - same padding as header */
 .sidebar-group a,
 .sidebar-group li a,
 #sidebar a,
@@ -126,7 +127,7 @@ code, pre {
   transition: text-decoration 0.15s ease !important;
 }
 
-/* Underline on hover - with more spacing */
+/* Underline on hover */
 .sidebar-group a:hover,
 .sidebar-group li a:hover,
 #sidebar a:hover,
@@ -160,10 +161,10 @@ code, pre {
   list-style: none !important;
 }
 
-/* Group spacing */
+/* Group/section spacing - bigger gap between sections */
 .sidebar-group,
 #navigation-items > div {
-  margin-bottom: 24px !important;
+  margin-bottom: 40px !important;
   padding-left: 0 !important;
 }
 
