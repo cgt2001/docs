@@ -105,7 +105,7 @@ code, pre {
   padding-left: 0 !important;
 }
 
-/* Sidebar links - smaller size with underline hover */
+/* Sidebar links */
 .sidebar-group a,
 .sidebar-group li a,
 #sidebar a,
@@ -122,16 +122,19 @@ code, pre {
   border-radius: 0 !important;
   display: block !important;
   text-decoration: none !important;
+  text-underline-offset: 6px !important;
   transition: text-decoration 0.15s ease !important;
 }
 
-/* Underline on hover */
+/* Underline on hover - with more spacing */
 .sidebar-group a:hover,
 .sidebar-group li a:hover,
 #sidebar a:hover,
 #navigation-items a:hover,
 #sidebar-group a:hover {
   text-decoration: underline !important;
+  text-underline-offset: 6px !important;
+  text-decoration-thickness: 1px !important;
   background: transparent !important;
   color: #000000 !important;
 }
