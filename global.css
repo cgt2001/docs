@@ -1,5 +1,5 @@
 /* Lightspark Docs Theme */
-/* ALL STYLES REFERENCED FROM https://www.lightspark.com */
+/* ALL STYLES FROM https://www.lightspark.com */
 
 /* Fonts */
 @font-face {
@@ -26,17 +26,16 @@
   font-display: swap;
 }
 
-/* Base - from lightspark.com */
+/* Base */
 body {
   font-family: 'Suisse Intl', -apple-system, BlinkMacSystemFont, sans-serif !important;
   color: #000000 !important;
   background: #F8F8F7 !important;
 }
 
-/* Headings - BLACK like lightspark.com */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Suisse Intl', sans-serif !important;
-  font-weight: 500;
+  font-weight: 500 !important;
   color: #000000 !important;
 }
 
@@ -44,12 +43,25 @@ code, pre {
   font-family: 'Suisse Intl Mono', monospace !important;
 }
 
-/* Hide tabs row */
-.nav-tabs {
+/* ============================================
+   PERMANENTLY HIDE TABS ROW (DOUBLE HEADER)
+   ============================================ */
+.nav-tabs,
+.nav-tabs-item,
+[class*="nav-tabs"],
+#navbar .px-12.h-12,
+#navbar > div > div > div.hidden.lg\:flex.px-12.h-12,
+#navbar > div > div > div:nth-child(2),
+.lg\:flex.px-12.h-12 {
   display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
-/* NAVBAR LINKS - BLACK like lightspark.com */
+/* Navbar */
 .navbar-link a,
 #navbar nav ul li a,
 #navbar a {
@@ -58,7 +70,6 @@ code, pre {
   font-size: 15px !important;
 }
 
-/* Background - cream like lightspark.com */
 #navbar-transition,
 #navbar-transition[data-is-opaque="true"],
 #navbar-transition[data-is-opaque="false"] {
@@ -71,65 +82,86 @@ code, pre {
   background: #F8F8F7 !important;
 }
 
-/* SIDEBAR - Fix position */
+/* ============================================
+   SIDEBAR - Match lightspark.com exactly
+   ============================================ */
+
 #sidebar {
   top: 4rem !important;
   height: calc(100vh - 4rem) !important;
 }
 
-/* SIDEBAR STYLING - Match lightspark.com */
-
-/* Group headers - GRAY like lightspark.com "Use cases" */
+/* Group headers - gray, small, light weight like lightspark.com "Use cases" */
+.sidebar-group-header,
 .sidebar-group-header h5,
 #sidebar-title {
   color: #516383 !important;
   font-weight: 400 !important;
-  font-size: 14px !important;
+  font-size: 16px !important;
   text-transform: none !important;
-  letter-spacing: normal !important;
+  letter-spacing: -0.01em !important;
+  margin-bottom: 16px !important;
 }
 
-/* Sidebar links - BOLD BLACK like lightspark.com */
+/* Sidebar links - black, medium weight, 32px size like lightspark.com menu */
 .sidebar-group a,
+.sidebar-group li a,
 #sidebar a,
-#navigation-items a {
+#navigation-items a,
+#sidebar-group a {
   color: #000000 !important;
   font-weight: 500 !important;
-  font-size: 24px !important;
-  padding: 12px 0 !important;
-  line-height: 1.3 !important;
+  font-size: 32px !important;
+  line-height: 1.2 !important;
+  padding: 16px 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  border-radius: 0 !important;
+  display: block !important;
 }
 
-/* Active sidebar link */
-.sidebar-group a[class*="bg-primary"],
+/* Remove default Mintlify backgrounds and styling */
+.sidebar-group a:hover,
+.sidebar-group a[class*="bg-"],
 .sidebar-group a[class*="text-primary"] {
+  background: transparent !important;
   color: #000000 !important;
-  font-weight: 500 !important;
-  background: transparent !important;
 }
 
-/* Remove default backgrounds on sidebar items */
-.sidebar-group a:hover {
-  background: transparent !important;
+/* Sidebar list spacing */
+.sidebar-group ul,
+#sidebar-group {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* ALL LINKS - BLACK like lightspark.com */
+.sidebar-group li {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+/* Group spacing */
+.sidebar-group,
+#navigation-items > div {
+  margin-bottom: 48px !important;
+}
+
+/* Content */
 a {
   color: #000000 !important;
 }
 
-/* Primary color override - BLACK */
 .text-primary,
 [class*="text-primary"] {
   color: #000000 !important;
 }
 
-/* Content area */
 #content-container {
   margin-top: 0 !important;
 }
 
-/* Table of contents */
 #table-of-contents-content {
   top: 4rem !important;
 }
