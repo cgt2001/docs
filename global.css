@@ -83,7 +83,7 @@ code, pre {
 }
 
 /* ============================================
-   SIDEBAR - Exact match to lightspark.com menu
+   SIDEBAR - Match lightspark.com menu
    ============================================ */
 
 #sidebar {
@@ -92,20 +92,20 @@ code, pre {
   padding: 24px 16px !important;
 }
 
-/* Group headers - light beige/tan like lightspark.com "Products", "Use cases" */
+/* Group headers - tan like lightspark.com */
 .sidebar-group-header,
 .sidebar-group-header h5,
 #sidebar-title {
   color: #9A8F85 !important;
   font-weight: 400 !important;
-  font-size: 18px !important;
+  font-size: 14px !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 8px !important;
   padding-left: 0 !important;
 }
 
-/* Sidebar links - black, large like lightspark.com "Grid", "Node", "Cross-border" */
+/* Sidebar links - smaller size with underline hover */
 .sidebar-group a,
 .sidebar-group li a,
 #sidebar a,
@@ -113,26 +113,38 @@ code, pre {
 #sidebar-group a {
   color: #000000 !important;
   font-weight: 400 !important;
-  font-size: 40px !important;
-  line-height: 1.1 !important;
-  padding: 0 !important;
+  font-size: 18px !important;
+  line-height: 1.4 !important;
+  padding: 6px 0 !important;
   margin: 0 !important;
   background: transparent !important;
   border: none !important;
-  border-bottom: none !important;
   border-radius: 0 !important;
   display: block !important;
+  text-decoration: none !important;
+  transition: text-decoration 0.15s ease !important;
 }
 
-/* Remove all Mintlify backgrounds and hover states */
+/* Underline on hover */
 .sidebar-group a:hover,
-.sidebar-group a[class*="bg-"],
-.sidebar-group a[class*="text-primary"] {
+.sidebar-group li a:hover,
+#sidebar a:hover,
+#navigation-items a:hover,
+#sidebar-group a:hover {
+  text-decoration: underline !important;
   background: transparent !important;
   color: #000000 !important;
 }
 
-/* Sidebar list - no padding, tight spacing */
+/* Active state */
+.sidebar-group a[class*="bg-"],
+.sidebar-group a[class*="text-primary"] {
+  background: transparent !important;
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+/* Sidebar list */
 .sidebar-group ul,
 #sidebar-group {
   margin: 0 !important;
@@ -145,10 +157,10 @@ code, pre {
   list-style: none !important;
 }
 
-/* Group spacing - matches lightspark.com */
+/* Group spacing */
 .sidebar-group,
 #navigation-items > div {
-  margin-bottom: 32px !important;
+  margin-bottom: 24px !important;
   padding-left: 0 !important;
 }
 
