@@ -83,7 +83,7 @@ code, pre {
 }
 
 /* ============================================
-   SIDEBAR - Equal spacing throughout
+   SIDEBAR
    ============================================ */
 
 #sidebar {
@@ -106,11 +106,12 @@ code, pre {
   line-height: 2.4 !important;
 }
 
-/* Sidebar links */
+/* ALL sidebar links - default state (no underline) */
+#sidebar a,
+#sidebar-content a,
+#navigation-items a,
 .sidebar-group a,
 .sidebar-group li a,
-#sidebar a,
-#navigation-items a,
 #sidebar-group a {
   color: #000000 !important;
   font-weight: 400 !important;
@@ -124,34 +125,46 @@ code, pre {
   display: block !important;
   text-decoration: none !important;
   text-underline-offset: 6px !important;
-  transition: text-decoration 0.15s ease !important;
+  text-shadow: none !important;
 }
 
-/* Underline on hover */
-.sidebar-group a:hover,
-.sidebar-group li a:hover,
+/* Hover state - underline */
 #sidebar a:hover,
+#sidebar-content a:hover,
 #navigation-items a:hover,
-#sidebar-group a:hover {
+.sidebar-group a:hover,
+.sidebar-group li a:hover {
   text-decoration: underline !important;
   text-underline-offset: 6px !important;
   text-decoration-thickness: 1px !important;
   background: transparent !important;
   color: #000000 !important;
+  font-weight: 400 !important;
 }
 
-/* Active/selected state - UNDERLINED not bold */
-.sidebar-group a[class*="bg-"],
-.sidebar-group a[class*="text-primary"],
+/* ACTIVE/SELECTED state - underlined, NOT bold */
+#sidebar a[class*="bg-primary"],
+#sidebar a[class*="text-primary"],
+#sidebar-content a[class*="bg-primary"],
+#navigation-items a[class*="bg-primary"],
 .sidebar-group a[class*="bg-primary"],
-#sidebar a[class*="bg-"],
-#navigation-items a[class*="bg-"] {
+.sidebar-group a[class*="text-primary"],
+#sidebar li a[class*="bg-primary"],
+a[class*="bg-primary/10"],
+a[class*="text-primary"] {
   background: transparent !important;
   color: #000000 !important;
   font-weight: 400 !important;
   text-decoration: underline !important;
   text-underline-offset: 6px !important;
   text-decoration-thickness: 1px !important;
+  text-shadow: none !important;
+}
+
+/* Remove any text-shadow that creates fake bold */
+[style*="text-shadow"],
+[class*="text-shadow"] {
+  text-shadow: none !important;
 }
 
 /* Sidebar list */
@@ -167,7 +180,7 @@ code, pre {
   list-style: none !important;
 }
 
-/* Bigger gap between sections */
+/* Gap between sections */
 .sidebar-group,
 #navigation-items > div {
   margin-bottom: 40px !important;
