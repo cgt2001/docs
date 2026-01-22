@@ -84,6 +84,7 @@ code, pre {
 
 /* ============================================
    SIDEBAR - Match lightspark.com exactly
+   Colors: #000000 (black), #33475B (gray), #F8F8F7 (cream)
    ============================================ */
 
 #sidebar {
@@ -91,11 +92,11 @@ code, pre {
   height: calc(100vh - 4rem) !important;
 }
 
-/* Group headers - gray, small, light weight like lightspark.com "Use cases" */
+/* Group headers - #33475B from lightspark.com */
 .sidebar-group-header,
 .sidebar-group-header h5,
 #sidebar-title {
-  color: #516383 !important;
+  color: #33475B !important;
   font-weight: 400 !important;
   font-size: 16px !important;
   text-transform: none !important;
@@ -103,7 +104,7 @@ code, pre {
   margin-bottom: 16px !important;
 }
 
-/* Sidebar links - black, medium weight, 32px size like lightspark.com menu */
+/* Sidebar links - #000000 black from lightspark.com */
 .sidebar-group a,
 .sidebar-group li a,
 #sidebar a,
@@ -121,7 +122,7 @@ code, pre {
   display: block !important;
 }
 
-/* Remove default Mintlify backgrounds and styling */
+/* Remove default Mintlify backgrounds */
 .sidebar-group a:hover,
 .sidebar-group a[class*="bg-"],
 .sidebar-group a[class*="text-primary"] {
