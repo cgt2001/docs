@@ -92,7 +92,7 @@ code, pre {
   padding: 24px 16px !important;
 }
 
-/* Group headers - NO extra margin, just line-height for spacing */
+/* Group headers */
 .sidebar-group-header,
 .sidebar-group-header h5,
 #sidebar-title {
@@ -106,7 +106,7 @@ code, pre {
   line-height: 2.4 !important;
 }
 
-/* Sidebar links - equal spacing via line-height */
+/* Sidebar links */
 .sidebar-group a,
 .sidebar-group li a,
 #sidebar a,
@@ -140,15 +140,21 @@ code, pre {
   color: #000000 !important;
 }
 
-/* Active state */
+/* Active/selected state - UNDERLINED not bold */
 .sidebar-group a[class*="bg-"],
-.sidebar-group a[class*="text-primary"] {
+.sidebar-group a[class*="text-primary"],
+.sidebar-group a[class*="bg-primary"],
+#sidebar a[class*="bg-"],
+#navigation-items a[class*="bg-"] {
   background: transparent !important;
   color: #000000 !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 6px !important;
+  text-decoration-thickness: 1px !important;
 }
 
-/* Sidebar list - no extra spacing */
+/* Sidebar list */
 .sidebar-group ul,
 #sidebar-group {
   margin: 0 !important;
